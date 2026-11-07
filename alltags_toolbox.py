@@ -1,7 +1,7 @@
 def main_menu():
     while True:
 
-        print("=== Alltags-Toolbox ===")
+        print("=== ALLTAGS-TOOLBOX ===")
         print("1 - Einkaufsliste")
         print("2 - Temperatur Einheit umrechnen")
         print("3 - Beenden")
@@ -19,10 +19,10 @@ def main_menu():
             break
         
 def einkaufsliste_menu():
-    einkaufsliste = []
+    einkaufsliste = {}
 
     while True:
-        print("--- Einkaufsliste ---")
+        print("=== EINKAUFSLISTE ===")
         print("1 - Artikel hinzufügen")
         print("2 - Liste anzeigen")
         print("3 - Artikel löschen")
@@ -34,6 +34,7 @@ def einkaufsliste_menu():
         if gewaehltes_tool == "1":
 
             hinzuzufügender_artikel = input("Welchen Artikel möchtest du hinzufügen?")
+            hinzuzufügende_anzahl = input("Wie viel möchtest du hinzufügen?")
 
             if hinzuzufügender_artikel == "":
                 print("Bitte füge einen Namen ein.")
@@ -42,20 +43,23 @@ def einkaufsliste_menu():
                 print(f"{hinzuzufügender_artikel} steht bereits auf deiner Einkaufsliste.")
                 
             else:
-                einkaufsliste.append(hinzuzufügender_artikel)
+                einkaufsliste.update({hinzuzufügender_artikel : hinzuzufügende_anzahl})
                 print(f"{hinzuzufügender_artikel} wurde zur Einkaufsliste hinzugefügt.")
 
 
         elif gewaehltes_tool == "2":
             i = 0
-            for e in einkaufsliste:
+            for k, v in einkaufsliste.items():
                 i += 1
-                print(i, e)
+                print(f"{i})", k, v)
+
+            if einkaufsliste == {}:
+                print("Keine Artikel auf der Einkaufsliste.")
                     
 
         elif gewaehltes_tool == "3":
             zu_löschender_artikel = input("Welchen Artikel möchtest du löschen?")
-            einkaufsliste.remove(zu_löschender_artikel)
+            einkaufsliste.pop(zu_löschender_artikel)
             print(f"{hinzuzufügender_artikel} wurde von der Einkaufsliste gelöscht.")
             
         elif gewaehltes_tool == "4":
