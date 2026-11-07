@@ -1,6 +1,11 @@
+import datetime
+
+#Variablen für Datumsansicht
+zeit_anzeige = datetime.datetime.now()
+
 def main_menu():
     while True:
-
+        print(zeit_anzeige.strftime("%A"), zeit_anzeige.strftime("%x"), zeit_anzeige.strftime("%X"))
         print("=== ALLTAGS-TOOLBOX ===")
         print("1 - Einkaufsliste")
         print("2 - Temperatur Einheit umrechnen")
