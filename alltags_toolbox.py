@@ -1,6 +1,5 @@
 import datetime
 
-#Variablen für Datumsansicht
 zeit_anzeige = datetime.datetime.now()
 
 def main_menu():
@@ -22,7 +21,7 @@ def main_menu():
         elif gewaehltes_tool == "3":
             print("Programm beendet.")
             break
-        
+
 def einkaufsliste_menu():
     einkaufsliste = {}
 
