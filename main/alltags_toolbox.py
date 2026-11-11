@@ -23,7 +23,7 @@ def main_menu():
 
         elif gewaehltes_tool == "3":
             print("Programm beendet.")
-            break
+            sys.exit()
 
 def einkaufsliste_menu():
     einkaufsliste = []
