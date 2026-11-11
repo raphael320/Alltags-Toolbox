@@ -44,7 +44,12 @@ def einkaufsliste_menu():
 
             hinzuzufügender_artikel = input("Welchen Artikel möchtest du hinzufügen?")
             hinzuzufügende_anzahl = input("Wie viel möchtest du hinzufügen?")
+            try:
+                return int(hinzuzufügende_anzahl)
 
+            except:
+                print("Bitte gib eine gültige Anzahl ein.")
+                
             if hinzuzufügender_artikel == "":
                 print("Bitte füge einen Namen ein.")
 
@@ -70,11 +75,15 @@ def einkaufsliste_menu():
             art_zu_bearbeiten = input("Möchtest du einen Artikel bearbeiten 'b' oder löschen 'l'?")
 
             if art_zu_bearbeiten == "b":
+                zu_bearbeitender_artikel = input("Welchen Artikel möchtest du bearbeiten?")
+                neuer_wert = input(f"Neuen Wert für '{zu_bearbeitender_artikel}' eingeben.")
+                einkaufsliste[zu_bearbeitender_artikel] = neuer_wert
+                print(f"{zu_bearbeitender_artikel}" bearbeitet.")
             
             elif art_zu_bearbeiten == "l":
-                zu_löschender_artikel = input("Welchen Artikel möchtest du löschen?")
-                einkaufsliste.pop(zu_löschender_artikel)
-                print(f"{zu_löschender_artikel} wurde von der Einkaufsliste gelöscht.")
+                #zu_löschender_artikel = input("Welchen Artikel möchtest du löschen?")
+               # einkaufsliste.pop(zu_löschender_artikel)
+               # print(f"{zu_löschender_artikel} wurde von der Einkaufsliste gelöscht.")
             
         elif gewaehltes_tool == "4":
             einkaufsliste.clear()
