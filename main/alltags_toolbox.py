@@ -1,3 +1,4 @@
+import sys
 import datetime
 import pandas
 from models import als_csv_json_exportieren as cje
@@ -26,13 +27,13 @@ def main_menu():
             sys.exit()
 
 def einkaufsliste_menu():
-    einkaufsliste = []
+    einkaufsliste = {}
 
     while True:
         print("=== EINKAUFSLISTE ===")
         print("1 - Artikel hinzufügen")
         print("2 - Liste anzeigen")
-        print("3 - Artikel löschen")
+        print("3 - Artikel bearbeiten oder löschen")
         print("4 - Liste leeren")
         print("5 - Liste als Datei exportieren")
         print("6 - Zurück")
@@ -51,7 +52,7 @@ def einkaufsliste_menu():
                 print(f"{hinzuzufügender_artikel} steht bereits auf deiner Einkaufsliste.")
                 
             else:
-                einkaufsliste.append({"name" : hinzuzufügender_artikel, "anzahl" : hinzuzufügende_anzahl})
+                einkaufsliste.update({"name" : hinzuzufügender_artikel, "anzahl" : hinzuzufügende_anzahl})
                 print(f"{hinzuzufügender_artikel} wurde zur Einkaufsliste hinzugefügt.")
 
 
@@ -61,14 +62,19 @@ def einkaufsliste_menu():
                 i += 1
                 print(i, e)
 
-            if einkaufsliste == []:
+            if einkaufsliste === {}:
                 print("Keine Artikel auf der Einkaufsliste.")
                     
 
         elif gewaehltes_tool == "3":
-            zu_löschender_artikel = input("Welchen Artikel möchtest du löschen?")
-            einkaufsliste.remove(zu_löschender_artikel)
-            print(f"{hinzuzufügender_artikel} wurde von der Einkaufsliste gelöscht.")
+            art_zu_bearbeiten = input("Möchtest du einen Artikel bearbeiten 'b' oder löschen 'l'?")
+
+            if art_zu_bearbeiten == "b":
+            
+            elif art_zu_bearbeiten == "l":
+                zu_löschender_artikel = input("Welchen Artikel möchtest du löschen?")
+                einkaufsliste.pop(zu_löschender_artikel)
+                print(f"{zu_löschender_artikel} wurde von der Einkaufsliste gelöscht.")
             
         elif gewaehltes_tool == "4":
             einkaufsliste.clear()
@@ -77,7 +83,7 @@ def einkaufsliste_menu():
             cje.datei_umwandeln(einkaufsliste)
             
         elif gewaehltes_tool == "6":
-            main_menu()
+            return
 
 def temperaturen_umrechnen():
     while True:
@@ -91,21 +97,50 @@ def temperaturen_umrechnen():
 
         if gewaehltes_tool == "1":
             celsius = int(input("Geben sie eine Zahl ein."))
+            
+            try:
+                return float(celsius)
+                
+            except ValueError:
+                print("Bitte geben sie eine Zahl (int/float) ein.")
+                break
+                
             fahrenheit = (celsius * 9 / 5) +32
             print(fahrenheit)
 
         if gewaehltes_tool == "2":
             fahrenheit = int(input("Geben sie eine Zahl ein."))
             celsius = (fahrenheit - 32) * 5 / 9
+            
+            try:
+                return float(celsius)
+                
+            except ValueError:
+                print("Bitte geben sie eine Zahl (int/float) ein.")
+                break
             print(celsius)
 
         elif gewaehltes_tool == "3":
             celsius = int(input("Geben sie eine Zahl ein."))
+            
+            try:
+                return float(celsius)
+                
+            except ValueError:
+                print("Bitte geben sie eine Zahl (int/float) ein.")
+                break
             kelvin = celsius + 273.15
             print(kelvin)
 
         elif gewaehltes_tool == "4":
             kelvin = int(input("Geben sie eine Zahl ein."))
+            
+            try:
+                return float(celsius)
+                
+            except ValueError:
+                print("Bitte geben sie eine Zahl (int/float) ein.")
+                break
             celsius = kelvin - 273.15
             print(celsius)
         
